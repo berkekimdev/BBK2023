@@ -4,7 +4,8 @@
 Aşağıda verilen komutu kullanarak otomatik olarak filtrelenmiş çıktıyla history.txt dosyasını oluşturabilirsiniz.
 
 ```
-history | sed 's/^[[:space:]][0-9]+[[:space:]]//' | grep -vE '^(history|myscript.sh)' > history.txt
+// history | sed 's/^[[:space:]][0-9]+[[:space:]]//' | grep -vE '^(history|myscript.sh)' > history.txt
+history | awk '{$1="";print substr($0,2)}' | grep -vE '^(history|myscript.sh)' >> history.txt
 ```
 
 Oluşan histor.txt dosyasının içinin bu şekil olduğu farz edelim. İsterseniz içini siz bu şekilde doldurup test edebilirsiniz:
